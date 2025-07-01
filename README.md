@@ -1,2 +1,2 @@
 # module-template-golang
-A module template for golang.
+A module template for golang
