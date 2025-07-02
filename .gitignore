@@ -1,0 +1,25 @@
+# system ignore
+.DS_Store
+Thumbs.db
+*.exe
+*.exe~
+*.dll
+tmp
+
+# Godep vender
+vendor
+
+# Knowledge ignore
+bootstrap*
+template
+debug
+*.log
+*.zip
+*.test
+
+# lint/unit test
+lint-*
+ut-*
+
+# wasm
+*.wasm

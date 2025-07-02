@@ -1,0 +1,49 @@
+[app]
+name = "Template User"
+version = "1.0.0"
+# run mode: vm|aws_lambda
+runmode = "vm"
+# environment value: local|dev|test|uat|prod
+env.value = "dev"
+# prefix of environment variables
+env.prefix = "TM_"
+
+[log]
+# one of: ERROR, WARN, INFO, DEBUG
+level = "INFO"
+path = "/var/log/template.log"
+writefile = false
+file.max.size = 100
+file.max.backups = 100
+file.max.age = 0
+
+[jwt]
+secret.code = "TOBE_REPLACED"
+
+[cors]
+allow.origins = ["https://template.com"]
+
+[http]
+# client config
+client.timeout = 10
+client.retry.max = 3
+# server config
+server.port = "8101"
+
+[db]
+enable = true
+# database sourece: postgres|mysql|sqlite
+source = "sqlite"
+file = "sqlite.db"
+host = "localhost"
+port = "5432"
+name = "TOBE_REPLACED"
+schema = "TOBE_REPLACED"
+username = "TOBE_REPLACED"
+password = "TOBE_REPLACED"
+max.open.conns = 100
+max.idle.conns = 25
+max.lifetime = 60
+max.idle.lifetime = 10
+auto.migrate = false
+mock.data= false

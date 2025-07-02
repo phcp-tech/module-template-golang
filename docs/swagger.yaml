@@ -1,0 +1,76 @@
+definitions:
+  dto.ResponseMessage:
+    properties:
+      code:
+        description: '200,0,1: success; others: failed'
+        type: integer
+      data:
+        description: omit in failed response
+      message:
+        description: omit in success response
+        type: string
+    type: object
+  dto.UserListResp:
+    properties:
+      code:
+        type: integer
+      data:
+        properties:
+          list:
+            items:
+              $ref: '#/definitions/model.User'
+            type: array
+          total:
+            type: integer
+        type: object
+    type: object
+  model.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      kind:
+        enum:
+        - Reader
+        - Author
+        - Admin
+        type: string
+      nickname:
+        type: string
+      status:
+        type: integer
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /users/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: user kind, default is all
+        enum:
+        - Reader
+        - Author
+        - Admin
+        in: query
+        name: kind
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.UserListResp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/dto.ResponseMessage'
+      summary: Query users list
+      tags:
+      - User
+swagger: "2.0"
