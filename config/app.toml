@@ -28,7 +28,7 @@ allow.origins = ["https://template.com"]
 client.timeout = 10
 client.retry.max = 3
 # server config
-server.port = "8101"
+server.port = "8001"
 
 [db]
 enable = true

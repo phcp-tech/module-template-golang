@@ -30,7 +30,7 @@ func MountSwagger(router *gin.Engine) *gin.Engine {
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.BasePath = "/usrapi/v1"
 	docs.SwaggerInfo.Schemes = []string{"https", "http"}
-	router.GET("/usrapi/v1/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler))
+	router.GET("/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler))
 
 	return router
 }

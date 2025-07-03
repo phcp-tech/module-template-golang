@@ -46,7 +46,7 @@ This template follows the standard Go project layout, making it easy to start ne
 **3. Generate swagger files**
 - swag init
 
-visit http://localhost:8101/usrapi/v1/swagger/index.html
+visit http://localhost:8001/swagger/index.html
 
 **4. Build**
 - go build
