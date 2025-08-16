@@ -22,6 +22,7 @@ import (
 	"template/pkg/dto"
 	"template/pkg/injector"
 
+	"gitlab.com/phcp-common/library-golang/code"
 	libDto "gitlab.com/phcp-common/library-golang/dto"
 	"gitlab.com/phcp-common/library-golang/log"
 	"gitlab.com/phcp-common/library-golang/util"
@@ -74,7 +75,7 @@ func getUserList(c *gin.Context) {
 	// get user list from service
 	if user, err := injector.UserServiceImpl.GetList(&listPara); err == nil {
 		c.JSON(http.StatusOK, libDto.ResponseMessage{
-			Code: http.StatusOK,
+			Code: code.API_CODE_SUCCESS,
 			Data: user})
 	} else {
 		c.JSON(http.StatusInternalServerError, libDto.ResponseMessage{Code: http.StatusInternalServerError, Message: err.Error()})

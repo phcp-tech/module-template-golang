@@ -266,8 +266,8 @@ github.com/yuin/goldmark v1.4.0/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 github.com/yusufpapurcu/wmi v1.2.4 h1:zFUKzehAFReQwLys1b/iSMl+JQGSCSjtVqQn9bBrPo0=
 github.com/yusufpapurcu/wmi v1.2.4/go.mod h1:SBZ9tNy3G9/m5Oi98Zks0QjeHVDvuK0qfxQmPyzfmi0=
-gitlab.com/phcp-common/library-golang v1.10.12 h1:N002ygr9pdlUSzwu6jSRYnWyC/q+UvDNmD1P0jdLd8U=
-gitlab.com/phcp-common/library-golang v1.10.12/go.mod h1:p8Nwn/uGUHOHx7XYBt+1H7FINfzQjN/fZu01zR1Aa5k=
+gitlab.com/phcp-common/library-golang v1.10.18 h1:5wQxH5KYMSTTaEeZqSE+lvDmjnA6CVQ+gd/bdnEAOV0=
+gitlab.com/phcp-common/library-golang v1.10.18/go.mod h1:BiP0sqzQ0rMJMRXvvGxWjJeWVX74jy3I3wGO0vfJEW8=
 go.opentelemetry.io/otel v1.19.0 h1:MuS/TNf4/j4IXsZuJegVzI1cwut7Qc00344rgH7p8bs=
 go.opentelemetry.io/otel v1.19.0/go.mod h1:i0QyjOq3UPoTzff0PJB2N66fb4S0+rSbSB15/oyH9fY=
 go.opentelemetry.io/otel/trace v1.19.0 h1:DFVQmlVbfVeOuBRrwdtaehRrWiL1JoVs9CPIQ1Dzxpg=
