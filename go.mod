@@ -8,7 +8,7 @@ require (
 	github.com/swaggo/files v1.0.0
 	github.com/swaggo/gin-swagger v1.5.3
 	github.com/swaggo/swag v1.8.10
-	gitlab.com/phcp-common/library-golang v1.10.18
+	gitlab.com/phcp-common/library-golang v1.10.20
 )
 
 //replace gitlab.com/phcp-common/library-golang => ../library-golang
