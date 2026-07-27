@@ -20,6 +20,7 @@ import (
 	"template/domain/model"
 	"template/pkg/dto"
 
+	"github.com/phcp-tech/common-library-golang/dbsqlx"
 	libDto "github.com/phcp-tech/common-library-golang/dto"
 	"github.com/vinovest/sqlx"
 )
@@ -39,8 +40,10 @@ func NewUserDao(db *sqlx.DB) IUserDao {
 func (d *UserDao) GetList(listPara *dto.UserListPara) (libDto.DataListResp, error) {
 	var liststr string = `SELECT id, username, nickname, email, kind, status FROM users WHERE 1 = 1 `
 	var totalstr string = `SELECT COUNT(*) FROM users WHERE 1 = 1 `
-	var sqlstr, pagestr string
+	var sqlstr string
 	var args []any
+
+	pagestr := dbsqlx.SortSql(&listPara.PageParameter) + dbsqlx.PageSql(&listPara.PageParameter)
 
 	ctx := context.Background()
 	var users []model.User
