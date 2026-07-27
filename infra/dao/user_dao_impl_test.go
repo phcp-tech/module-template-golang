@@ -96,3 +96,45 @@ func TestUserDao_GetList_NoRows(t *testing.T) {
 		t.Fatalf("expected total=0, got %d", resp.Total)
 	}
 }
+
+// TestUserDao_GetList_Pagination is a regression test: GetList used to declare
+// sqlstr/pagestr and never assign them, so Sort/Direction/Page/Limit were
+// silently ignored (see CLAUDE.md). Total must still reflect the full match
+// count even when Limit caps the returned page.
+func TestUserDao_GetList_Pagination(t *testing.T) {
+	db := newTestDB(t)
+	d := NewUserDao(db)
+
+	seedUser(t, db, model.User{Id: 1, Username: "gordon", Nickname: "Gordon", Email: "gordon@example.com", Kind: "Admin", Status: "Active"})
+	seedUser(t, db, model.User{Id: 2, Username: "alice", Nickname: "Alice", Email: "alice@example.com", Kind: "Member", Status: "Active"})
+	seedUser(t, db, model.User{Id: 3, Username: "bob", Nickname: "Bob", Email: "bob@example.com", Kind: "Member", Status: "Active"})
+
+	para := &dto.UserListPara{}
+	para.Limit = 2
+	resp, err := d.GetList(para)
+	if err != nil {
+		t.Fatalf("GetList: %v", err)
+	}
+	if resp.Total != 3 {
+		t.Fatalf("expected total=3 (unaffected by Limit), got %d", resp.Total)
+	}
+	users, ok := resp.List.([]model.User)
+	if !ok || len(users) != 2 {
+		t.Fatalf("expected Limit=2 to cap the returned page at 2 rows, got %+v", resp.List)
+	}
+
+	para = &dto.UserListPara{}
+	para.Sort = "username"
+	para.Direction = "DESC"
+	resp, err = d.GetList(para)
+	if err != nil {
+		t.Fatalf("GetList: %v", err)
+	}
+	users, ok = resp.List.([]model.User)
+	if !ok || len(users) != 3 {
+		t.Fatalf("expected 3 users, got %+v", resp.List)
+	}
+	if users[0].Username != "gordon" || users[1].Username != "bob" || users[2].Username != "alice" {
+		t.Fatalf("expected DESC order by username (gordon, bob, alice), got %+v", users)
+	}
+}

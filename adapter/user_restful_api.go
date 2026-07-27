@@ -79,7 +79,7 @@ func MountUser(router *gin.Engine) *gin.Engine {
 // @Router /users/list [get]
 func getUserList(c *gin.Context) {
 	var listPara dto.UserListPara
-	//分页等可选参数
+	// paginate parameters
 	listPara.Page, _ = strconv.Atoi(c.Query("page"))
 	listPara.Limit, _ = strconv.Atoi(c.Query("limit"))
 	listPara.Sort = c.Query("sort")
