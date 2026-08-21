@@ -2,7 +2,7 @@
 
 **Language:** English | [中文](README-zh.md)
 
-A common module template for golang.
+A common-perpose Go language development template build on `common-library-golang`.
 
 ## 1. Code Structure
 

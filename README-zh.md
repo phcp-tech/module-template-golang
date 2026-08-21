@@ -2,7 +2,7 @@
 
 **语言:** [English](README.md) | 中文
 
-一个通用的 Go 语言模块模板。
+一个基于 `common-library-golang` 构建的通用 Go 语言开发模板。
 
 ## 1. 代码结构
 
